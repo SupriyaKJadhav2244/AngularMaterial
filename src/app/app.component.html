@@ -1,0 +1,43 @@
+<mat-card class="container MainBox">
+  <mat-card-title class="text-center" style="padding-top: 1.5rem;margin-bottom: 2rem;margin-top: 1rem;height: 5rem;background-color: blueviolet;">
+    Simple Form
+  </mat-card-title>
+  <mat-card-content>
+    <div class="row"> 
+      <mat-form-field appearance="fill" class="form-control" style="border: none;">
+        <mat-label>Input</mat-label>
+        <input matInput  name="Name" #Fname="ngModel" ngModel [class.is-valid]="Fname.invalid && Fname.touched" required>
+      </mat-form-field> 
+    </div> <br><br> 
+    <span [class.d-none]="Fname.valid || Fname.untouched">
+      <p class="text-danger">Name is required...</p>
+    </span> 
+    <div class="row"> 
+      <mat-form-field appearance="fill" class="form-control" style="border: none;">
+        <mat-label>Select</mat-label>
+        <mat-select name="select" #Select="ngModel" ngModel [class.is-valid]="Select.invalid && Select.touched" required>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>   
+      </mat-form-field>
+    </div><br><br>
+    <span [class.d-none]="Select.valid || Select.untouched">
+      <p class="text-danger">Select is required...</p>
+    </span> 
+    <div class="row"> 
+      <mat-form-field appearance="fill" class="form-control" style="border: none;">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput name="area" #Area="ngModel" ngModel [class.is-valid]="Area.invalid && Area.touched" pattern="abc" required></textarea>
+      </mat-form-field> 
+    </div> <br><br>
+    <span *ngIf="Area.errors && (Area.invalid && Area.touched)">
+      <p class="text-danger" *ngIf="Area.errors.required">Select is required...</p>
+      <p class="text-danger" *ngIf="Area.errors.pattern">Please Select Correct...</p>
+    </span> 
+    <div class="text-center">
+      <button mat-raised-button color="primary" style="margin-top: 2rem;">Submit</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- <router-outlet></router-outlet> --> 
